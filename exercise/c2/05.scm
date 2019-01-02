@@ -1,4 +1,4 @@
-(define (empty-env) `())
+(define (empty-env) '())
 
 (define (extend-env var val env)
     (cons (cons var val) env))
@@ -11,12 +11,12 @@
             (apply-env (cdr env) search-var))))
 
 (define (report-no-binding-found search-var)
-    (eopl:error `apply-env "No binding for ~s" search-var))
+    (eopl:error 'apply-env "No binding for ~s" search-var))
 
 
 (define e
-    (extend-env `d 6
-        (extend-env `y 8
-            (extend-env `x 7
-                (extend-env `y 14
+    (extend-env 'd 6
+        (extend-env 'y 8
+            (extend-env 'x 7
+                (extend-env 'y 14
                     (empty-env))))))

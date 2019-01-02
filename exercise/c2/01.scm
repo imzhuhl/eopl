@@ -1,5 +1,5 @@
 (define base 16)
-(define bzero `())
+(define bzero '())
 (define (bzero? lst)
     (if (null? lst)
         #t
@@ -7,7 +7,7 @@
 
 (define (successor n)
     (if (bzero? n)
-        `(1)
+        '(1)
         (let ((t (+ 1 (car n))))
             (if (= t base)
                 (cons 0 (successor (cdr n)))
@@ -16,7 +16,7 @@
 (define (predecessor n)
     (cond 
         ((bzero? n) #f)
-        ((equal? n `(1)) zero)
+        ((equal? n '(1)) zero)
         ((= 0 (car n))
             (if (null? (cdr n))
                 #f
@@ -27,7 +27,7 @@
 ; 构造 bigit, 如 (make 17)
 (define (bmake n)
     (if (zero? n)
-        `()
+        '()
         (successor (bmake (- n 1)))))
 
 

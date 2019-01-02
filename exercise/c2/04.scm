@@ -1,5 +1,5 @@
 (define (empty-stack)
-    `())
+    '())
 
 (define (empty-stack? stack)
     (if (equal? stack `())

@@ -1,13 +1,13 @@
 ; 1.15
 (define (duple n x)
     (if (= n 0)
-        `()
+        '()
         (cons x (duple (- n 1) x))))
 
 ; 1.16
 (define (invert lst)
     (if (null? lst)
-        `()
+        '()
         (cons
             (invert-a (car lst))
             (invert (cdr lst)))))
@@ -17,7 +17,7 @@
 ; 1.17
 (define (down lst)
     (if (null? lst)
-        `()
+        '()
         (cons 
             (cons (car lst) `())
             (down (cdr lst)))))
@@ -25,7 +25,7 @@
 ; 1.18
 (define (swapper s1 s2 slist)
     (if (null? slist)
-        `()
+        '()
         (cons
             (swapper-a s1 s2 (car slist))
             (swapper s1 s2 (cdr slist)))))
@@ -59,11 +59,11 @@
 ; 1.21
 (define (product sos1 sos2)
     (if (null? sos1)
-        `()
+        '()
         (append (product-a (car sos1) sos2) (product (cdr sos1) sos2))))
 (define (product-a x sos2)
     (if (null? sos2)
-        `()
+        '()
         (cons
             (list x (car sos2))
             (product-a x (cdr sos2)))))
@@ -71,7 +71,7 @@
 ; 1.22
 (define (filter-in pred lst)
     (if (null? lst)
-        `()
+        '()
         (if (pred (car lst))
             (cons (car lst) (filter-in pred (cdr lst)))
             (filter-in pred (cdr lst)))))
@@ -105,7 +105,7 @@
 ; 1.26
 (define (up lst)
     (if (null? lst)
-        `()
+        '()
         (if (list? (car lst))
             (append (car lst) (up (cdr lst)))
             (cons (car lst) (up (cdr lst))))))
@@ -113,7 +113,7 @@
 ; 1.27
 (define (flatten slist)
     (if (null? slist)
-        `()
+        '()
         (if (symbol? slist)
             (list slist)
             (append (flatten (car slist)) (flatten (cdr slist))))))
@@ -130,7 +130,7 @@
 ; 1.29
 ; 选择排序
 (define (sort loi)
-    (sort-a `() loi))
+    (sort-a '() loi))
 (define (sort-a nls loi)
     (if (null? loi)
         nls
