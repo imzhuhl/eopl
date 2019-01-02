@@ -68,6 +68,55 @@
             (list x (car sos2))
             (product-a x (cdr sos2)))))
 
+; 1.22
+(define (filter-in pred lst)
+    (if (null? lst)
+        `()
+        (if (pred (car lst))
+            (cons (car lst) (filter-in pred (cdr lst)))
+            (filter-in pred (cdr lst)))))
+
+; 1.23
+(define (list-index pred lst)
+        (list-index-a pred lst 0))
+(define (list-index-a pred lst cnt)
+    (if (null? lst)
+        #f
+        (if (pred (car lst))
+            cnt
+            (list-index-a pred (cdr lst) (+ cnt 1)))))
+
+; 1.24
+(define (every? pred lst)
+    (if (null? lst)
+        #t
+        (if (pred (car lst))
+            (every? pred (cdr lst))
+            #f)))
+
+; 1.25
+(define (exists? pred lst)
+    (if (null? lst)
+        #f
+        (if (pred (car lst))
+            #t
+            (exists? pred (cdr lst)))))
+
+; 1.26
+(define (up lst)
+    (if (null? lst)
+        `()
+        (if (list? (car lst))
+            (append (car lst) (up (cdr lst)))
+            (cons (car lst) (up (cdr lst))))))
+
+; 1.27
+
+
+
+
+
+
 
 
 
