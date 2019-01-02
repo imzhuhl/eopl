@@ -111,6 +111,48 @@
             (cons (car lst) (up (cdr lst))))))
 
 ; 1.27
+(define (flatten slist)
+    (if (null? slist)
+        `()
+        (if (symbol? slist)
+            (list slist)
+            (append (flatten (car slist)) (flatten (cdr slist))))))
+
+; 1.28
+(define (merge loi1 loi2)
+    (cond ((and (not (null? loi1)) (not (null? loi2)))
+        (if (< (car loi1) (car loi2))
+            (append (list (car loi1)) (merge (cdr loi1) loi2))
+            (append (list (car loi2)) (merge loi1 (cdr loi2)))))
+        ((null? loi1) loi2)
+        ((null? loi2) loi1)))
+
+; 1.29
+; 选择排序
+(define (sort loi)
+    (sort-a `() loi))
+(define (sort-a nls loi)
+    (if (null? loi)
+        nls
+        (sort-a (insert nls (car loi)) (cdr loi))))
+(define (insert lst x)
+    (cond 
+        ((null? lst) (list x))
+        ((< x (car lst)) (cons x lst))
+        (else (cons (car lst) (insert (cdr lst) x)))))
+
+; 1.30
+(define (sort-pred pred loi)
+    (sort-pred-a pred `() loi))
+(define (sort-pred-a pred nls loi)
+    (if (null? loi)
+        nls
+        (sort-pred-a pred (insert-a pred nls (car loi)) (cdr loi))))
+(define (insert-a pred lst x)
+    (cond
+        ((null? lst) (list x))
+        ((pred x (car lst)) (cons x lst))
+        (else (cons (car lst) (insert-a pred (cdr lst) x)))))
 
 
 
