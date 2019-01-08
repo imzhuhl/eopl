@@ -1,3 +1,4 @@
+#lang racket
 (define (number->bintree node)
     (list node '() '()))
 
